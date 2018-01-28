@@ -10,17 +10,20 @@
    <script src="app/app.js"></script>
    <script src="app/AppConstants.js"></script>
    <script src="app/AppConfig.js"></script>
-   <script src="app/factories/SongFactory.js"></script>
+   <!-- <script src="app/factories/SongFactory.js"></script> -->
    <script src="app/factories/AuthFactory.js"></script>
    <script src="app/controllers/AuthCtrl.js"></script>
-   <script src="app/controllers/SongDetailCtrl.js"></script>
+   <!-- <script src="app/controllers/SongDetailCtrl.js"></script>
    <script src="app/controllers/SongListCtrl.js"></script>
-   <script src="app/controllers/SongFormCtrl.js"></script>
+   <script src="app/controllers/SongFormCtrl.js"></script> -->
    <title>ang/FB</title>
 </head>
 
-<body>
-   
+<body ng-app="SongApp">
+   <nav ng-controller="AuthCtrl">
+      <button ng-click="logoutUser()">Logout</button>
+   </nav>
+
    <div ng-view></div>
 
 </body>

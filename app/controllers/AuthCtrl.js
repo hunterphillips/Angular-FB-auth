@@ -1,8 +1,16 @@
 'use strict'; 
 angular.module('SongApp')
 
-.controller('AuthCtrl', function($scope, AuthFactory){
+.controller('AuthCtrl',['$location', '$scope', 'AuthFactory',function($location, $scope, AuthFactory){
    $scope.auth = {};
+
+   $scope.logMeIn = (loginStuff) => {
+      AuthFactory.authenticate(loginStuff).then((didLogin)=>{
+         $scope.login = {};
+         $scope.refister = {};
+         $location.url("/songs/list");
+      });
+   };
 
    $scope.registerUser = (registerNewUser) => {
       AuthFactory.registerWithEmail(registerNewUser)
@@ -10,4 +18,13 @@ angular.module('SongApp')
          console.log(didRegister);
       });
    };
-});
+
+   $scope.loginUser = (loginNewUser)=>{
+      $scope.logMeIn(loginNewUser);
+   };
+
+   $scope.logoutUser = () => {
+      AuthFactory.logout();
+      $location.url('/auth');
+   };
+}]);
