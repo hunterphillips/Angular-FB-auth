@@ -7,7 +7,7 @@ angular.module('SongApp')
    $scope.logMeIn = (loginStuff) => {
       AuthFactory.authenticate(loginStuff).then((didLogin)=>{
          $scope.login = {};
-         $scope.refister = {};
+         $scope.register = {};
          $location.url("/songs/list");
       });
    };
